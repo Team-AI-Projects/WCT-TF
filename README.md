@@ -63,7 +63,7 @@ Other args to take note of:
 * `--noise`  Generate textures from random noise image instead of webcam
 * `--random`  Load a new random image every # of frames
 * `--adain`  Use [Adaptive Instance Normalization](https://arxiv.org/abs/1703.06868) as transfer op instead of WCT
-
+* `--mask` Use a mask to only stylize a specific section of the image.
 There are also a couple of keyboard shortcuts:
 
 * `r`  Load random image from style folder
@@ -153,6 +153,13 @@ For example:
 
    `python webcam.py --checkpoints models/relu5_1 models/relu4_1 models/relu3_1 models/relu2_1 models/relu1_1 --relu-targets relu5_1 relu4_1 relu3_1 relu2_1 relu1_1 --style-size 512 --alpha 0.8 --style-path /path/to/styleimgs --swap5 --ss-patch-size 3 --ss-stride 1 --ss-alpha .7` 
 
+## About Masks
+
+Masks can be used like this:
+*You will need to provide an image to use as a mask*
+
+  `python styize.py --checkpoints models/relu5_1 models/relu4_1 models/relu3_1 models/relu2_1 models/relu1_1 --relu-targets relu5_1 relu4_1 relu3_1 relu2_1 relu1_1 --style-size 512 --style-path /path/to/styleimgs --content-path /path/to/contentimgs --mask path/to/content/mask`
+
 
 ## Notes
 
@@ -178,7 +185,7 @@ Docker support was graciously [provided by @bryant1410](https://github.com/eridg
 
 - [ ] Interpolation between styles
 - [x] Video stylization
-- [ ] Spatial control/masking
+- [x] Spatial control/masking
 - [x] [Style swap](#style-swap)
 - [ ] Webcam style window threading
 - [x] ~~Forget this static graph nonsense and redo everything in PyTorch~~ Xueting Li has a [nice implementation](https://github.com/sunshineatnoon/PytorchWCT)
